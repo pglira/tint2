@@ -817,14 +817,19 @@ void task_handle_mouse_event(Task *task, MouseAction action)
         case NONE:          break;
         case CLOSE:         close_window(task->win);
                             break;
-        case TOGGLE:        activate_window(task->win);
+        case TOGGLE:        if (task->desktop != ALL_DESKTOPS && task->desktop != server.desktop)
+                                change_desktop(task->desktop);
+                            activate_window(task->win);
                             break;
         case ICONIFY:       XIconifyWindow(server.display, task->win, server.screen);
                             break;
         case TOGGLE_ICONIFY:if (active_task && task->win == active_task->win)
                                 XIconifyWindow(server.display, task->win, server.screen);
-                            else
+                            else {
+                                if (task->desktop != ALL_DESKTOPS && task->desktop != server.desktop)
+                                    change_desktop(task->desktop);
                                 activate_window(task->win);
+                            }
                             break;
         case SHADE:         toggle_window_shade(task->win);
                             break;

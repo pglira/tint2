@@ -248,8 +248,10 @@ void handle_mouse_release_event(XEvent *e)
         Task *task = click_task(panel, e->xbutton.x, e->xbutton.y);
         if (task) {
             if (diff_desktop && action == TOGGLE_ICONIFY) {
-                if (!window_is_active(task->win))
+                if (!window_is_active(task->win)) {
+                    change_desktop(taskbar->desktop);
                     activate_window(task->win);
+                }
             } else
                 task_handle_mouse_event(task, action);
         }
