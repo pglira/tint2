@@ -749,7 +749,7 @@ void set_task_state(Task *task, TaskState state)
                      get_window_monitor(task->win) != ((Panel *)task->area.panel)->monitor) )
 
                     hide = TRUE;
-                
+
                 if (hide == task1->area.on_screen) {
                     task1->area.on_screen = !hide;
                     schedule_redraw(&task1->area);
@@ -797,9 +797,10 @@ void add_urgent(Task *task)
     if (!urgent_timer.enabled_)
         change_timer(&urgent_timer, true, 10, 1000, blink_urgent, 0);
 
-    Panel *panel = task->area.panel;
-    if (panel->is_hidden)
-        autohide_show(panel);
+    // An urgent task does not force an autohidden panel to show
+    // Panel *panel = task->area.panel;
+    // if (panel->is_hidden)
+    //     autohide_show(panel);
 }
 
 void del_urgent(Task *task)
