@@ -20,6 +20,7 @@
 #include "signals.h"
 #include "test.h"
 #include "tooltip.h"
+#include "icon_picker.h"
 #include "tracing.h"
 #include "uevent.h"
 #include "version.h"
@@ -256,6 +257,7 @@ void init_post_config()
 
     init_signals_postconfig();
     load_default_task_icon();
+    init_icon_picker();
 
     XSync(server.display, False);
 }
@@ -341,6 +343,7 @@ void cleanup()
     cleanup_battery();
 #endif
     cleanup_separator();
+    cleanup_icon_picker();
     cleanup_taskbar();
     cleanup_panel();
     cleanup_config();

@@ -455,7 +455,7 @@ For the next 3 options STATUS can be `active` / `iconified`  / `urgent`:
 
 The possible mouse events are: `left, middle, right, scroll_up, scroll_down`.
 
-The possible mouse actions are: `none, close, toggle, iconify, shade, toggle_iconify, maximize_restore, desktop_left, desktop_right, next_task, prev_task`.
+The possible mouse actions are: `none, close, toggle, iconify, shade, toggle_iconify, maximize_restore, desktop_left, desktop_right, next_task, prev_task, set_icon`.
 
 Use `mouse_event = action` to customize mouse actions. Example:
 ```
@@ -477,6 +477,17 @@ The action semantics:
   * `desktop_right` : send the task to the desktop on the right
   * `next_task` : send the focus to next task
   * `prev_task` : send the focus to previous task
+  * `set_icon` : open a small popup to give the task a custom icon. Type a
+    short label of up to 3 characters (letters, digits, or a single emoji);
+    it is rendered as white text on a rounded square, scaled to fit. Pick the
+    square's color from the swatches, or click/drag the gradient strip below
+    them for any color. Click outside the popup (or press Esc) to apply the
+    typed label; Ctrl+V pastes (handy for emojis). The grid below shows recently used
+    icons (label plus color); click one to reuse it. The `×` cell restores the
+    window's own icon. Overrides apply per window and last until tint2 exits;
+    recent icons are remembered in `$XDG_CACHE_HOME/tint2/recent_icons`. The
+    default (first) swatch color can be set with
+    `icon_badge_background_color = #rrggbb [opacity]` (opacity is 0 to 100).
 
 ### System Tray
 

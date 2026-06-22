@@ -47,6 +47,7 @@
 #include "task.h"
 #include "taskbar.h"
 #include "taskbarname.h"
+#include "icon_picker.h"
 #include "systraybar.h"
 #include "launcher.h"
 #include "clock.h"
@@ -124,19 +125,20 @@ void cleanup_config()
 
 void get_action(char *event, MouseAction *action)
 {
-    switch (str_index ( event,
-                        (char *[]){ "close",
-                                    "desktop_left",
-                                    "desktop_right",
-                                    "iconify",
-                                    "maximize_restore",
-                                    "next_task",
-                                    "none",
-                                    "prev_task",
-                                    "shade",
-                                    "toggle",
-                                    "toggle_iconify"},
-                        MOUSE_ACTIONS)) {
+    // Sorted for bsearch in str_index().
+    static char *names[] = { "close",
+                             "desktop_left",
+                             "desktop_right",
+                             "iconify",
+                             "maximize_restore",
+                             "next_task",
+                             "none",
+                             "prev_task",
+                             "set_icon",
+                             "shade",
+                             "toggle",
+                             "toggle_iconify" };
+    switch (str_index (event, names, sizeof(names) / sizeof(names[0]))) {
     case  0: *action = CLOSE;           break;
     case  1: *action = DESKTOP_LEFT;    break;
     case  2: *action = DESKTOP_RIGHT;   break;
@@ -145,9 +147,10 @@ void get_action(char *event, MouseAction *action)
     case  5: *action = NEXT_TASK;       break;
     case  6: *action = NONE;            break;
     case  7: *action = PREV_TASK;       break;
-    case  8: *action = SHADE;           break;
-    case  9: *action = TOGGLE;          break;
-    case 10: *action = TOGGLE_ICONIFY;  break;
+    case  8: *action = SET_ICON;        break;
+    case  9: *action = SHADE;           break;
+    case 10: *action = TOGGLE;          break;
+    case 11: *action = TOGGLE_ICONIFY;  break;
     default:
         fprintf(stderr, "tint2: Error: unrecognized action '%s'. Please fix your config file.\n", event);
     }
@@ -1317,6 +1320,8 @@ void add_entry(char *key, char *value)
                     panel_config.g_task.background[status]->fill_content_tint_weight > 0)
                     panel_config.g_task.has_content_tint = TRUE;
             }
+        } else if (strcmp(key, "icon_badge_background_color") == 0) {
+            VALUES_TO_COLOR (icon_badge_bg_color, 0);
         } else
             fprintf(stderr, "tint2: invalid option \"%s\",\n  upgrade tint2 or correct your config file\n", key);
     }
