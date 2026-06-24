@@ -626,7 +626,10 @@ void draw_background(Area *a, cairo_t *c)
         y = top_border_width (a),
         w = a->width - left_right_border_width (a),
         h = a->height - top_bottom_border_width (a),
-        r = a->bg->border.radius - a->bg->border.width / 2.0;
+        // Inner corner radius; clamped at 0 since a radius smaller than half the
+        // border width would otherwise be negative and distort the fill path,
+        // leaving a 1px seam between the fill and the border.
+        r = MAX(0, a->bg->border.radius - a->bg->border.width / 2.0);
 
     #define bg_compose                                                                   \
         if (!bg_set) do{                                                                 \
