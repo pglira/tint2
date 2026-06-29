@@ -2967,6 +2967,7 @@ void init_task_page (GtkWidget *parent)
     gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_left), _("Desktop right"));
     gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_left), _("Next task"));
     gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_left), _("Previous task"));
+    gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_left), _("Set icon"));
     gtk_combo_box_set_active(GTK_COMBO_BOX(task_mouse_left), 5);
     gtk_widget_set_tooltip_text(task_mouse_left,
                                 _("Specifies the action performed when task buttons receive a left click event: \n"
@@ -2980,7 +2981,8 @@ void init_task_page (GtkWidget *parent)
                                   "'Desktop left' sends the task to the previous desktop. \n"
                                   "'Desktop right' sends the task to the next desktop. \n"
                                   "'Next task' sends the focus to the next task. \n"
-                                  "'Previous task' sends the focus to the previous task."));
+                                  "'Previous task' sends the focus to the previous task. \n"
+                                  "'Set icon' opens a popup to set a custom icon for the task."));
 
     row++, col = 2;
     label = gtk_label_new(_("Wheel scroll up"));
@@ -3004,6 +3006,7 @@ void init_task_page (GtkWidget *parent)
     gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_scroll_up), _("Desktop right"));
     gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_scroll_up), _("Next task"));
     gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_scroll_up), _("Previous task"));
+    gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_scroll_up), _("Set icon"));
     gtk_combo_box_set_active(GTK_COMBO_BOX(task_mouse_scroll_up), 0);
     gtk_widget_set_tooltip_text(task_mouse_scroll_up,
                                 _("Specifies the action performed when task buttons receive a scroll up event: \n"
@@ -3017,7 +3020,8 @@ void init_task_page (GtkWidget *parent)
                                   "'Desktop left' sends the task to the previous desktop. \n"
                                   "'Desktop right' sends the task to the next desktop. \n"
                                   "'Next task' sends the focus to the next task. \n"
-                                  "'Previous task' sends the focus to the previous task."));
+                                  "'Previous task' sends the focus to the previous task. \n"
+                                  "'Set icon' opens a popup to set a custom icon for the task."));
 
     row++, col = 2;
     label = gtk_label_new(_("Middle click"));
@@ -3041,6 +3045,7 @@ void init_task_page (GtkWidget *parent)
     gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_middle), _("Desktop right"));
     gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_middle), _("Next task"));
     gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_middle), _("Previous task"));
+    gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_middle), _("Set icon"));
     gtk_combo_box_set_active(GTK_COMBO_BOX(task_mouse_middle), 0);
     gtk_widget_set_tooltip_text(task_mouse_middle,
                                 _("Specifies the action performed when task buttons receive a middle click event: \n"
@@ -3054,7 +3059,8 @@ void init_task_page (GtkWidget *parent)
                                   "'Desktop left' sends the task to the previous desktop. \n"
                                   "'Desktop right' sends the task to the next desktop. \n"
                                   "'Next task' sends the focus to the next task. \n"
-                                  "'Previous task' sends the focus to the previous task."));
+                                  "'Previous task' sends the focus to the previous task. \n"
+                                  "'Set icon' opens a popup to set a custom icon for the task."));
 
     row++, col = 2;
     label = gtk_label_new(_("Wheel scroll down"));
@@ -3078,6 +3084,7 @@ void init_task_page (GtkWidget *parent)
     gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_scroll_down), _("Desktop right"));
     gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_scroll_down), _("Next task"));
     gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_scroll_down), _("Previous task"));
+    gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_scroll_down), _("Set icon"));
     gtk_combo_box_set_active(GTK_COMBO_BOX(task_mouse_scroll_down), 0);
     gtk_widget_set_tooltip_text(task_mouse_scroll_down,
                                 _("Specifies the action performed when task buttons receive a scroll down event: \n"
@@ -3091,7 +3098,8 @@ void init_task_page (GtkWidget *parent)
                                   "'Desktop left' sends the task to the previous desktop. \n"
                                   "'Desktop right' sends the task to the next desktop. \n"
                                   "'Next task' sends the focus to the next task. \n"
-                                  "'Previous task' sends the focus to the previous task."));
+                                  "'Previous task' sends the focus to the previous task. \n"
+                                  "'Set icon' opens a popup to set a custom icon for the task."));
 
     row++, col = 2;
     label = gtk_label_new(_("Right click"));
@@ -3115,6 +3123,7 @@ void init_task_page (GtkWidget *parent)
     gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_right), _("Desktop right"));
     gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_right), _("Next task"));
     gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_right), _("Previous task"));
+    gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(task_mouse_right), _("Set icon"));
     gtk_combo_box_set_active(GTK_COMBO_BOX(task_mouse_right), 1);
     gtk_widget_set_tooltip_text(task_mouse_right,
                                 _("Specifies the action performed when task buttons receive a right click event: \n"
@@ -3128,7 +3137,8 @@ void init_task_page (GtkWidget *parent)
                                   "'Desktop left' sends the task to the previous desktop. \n"
                                   "'Desktop right' sends the task to the next desktop. \n"
                                   "'Next task' sends the focus to the next task. \n"
-                                  "'Previous task' sends the focus to the previous task."));
+                                  "'Previous task' sends the focus to the previous task. \n"
+                                  "'Set icon' opens a popup to set a custom icon for the task."));
 
     change_paragraph(parent);
 

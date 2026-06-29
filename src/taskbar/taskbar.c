@@ -33,6 +33,7 @@
 #include "panel.h"
 #include "strnatcmp.h"
 #include "tooltip.h"
+#include "icon_picker.h"
 
 GHashTable *win_to_task;
 
@@ -449,6 +450,7 @@ void taskbar_default_font_changed()
 
 void taskbar_remove_task(Window *win)
 {
+    icon_override_forget(*win);
     remove_task(get_task(*win));
 }
 

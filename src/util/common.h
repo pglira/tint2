@@ -110,6 +110,7 @@ typedef enum MouseAction
     DESKTOP_RIGHT,
     NEXT_TASK,
     PREV_TASK,
+    SET_ICON,
     MOUSE_ACTIONS
 } MouseAction;
 

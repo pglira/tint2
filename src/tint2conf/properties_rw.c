@@ -2209,6 +2209,7 @@ char *win_act_sv[] = {  "close",
                         "next_task",
                         "none",
                         "prev_task",
+                        "set_icon",
                         "shade",
                         "toggle",
                         "toggle_iconify" };
@@ -2220,6 +2221,7 @@ enum {  wa_close,
         wa_next_task,
         wa_none,
         wa_prev_task,
+        wa_set_icon,
         wa_shade,
         wa_toggle,
         wa_toggle_iconify,
@@ -2241,6 +2243,7 @@ void set_action(char *event, GtkWidget *combo)
         case wa_desktop_right:      gtk_combo_box_set_active(GTK_COMBO_BOX(combo), 8); break;
         case wa_next_task:          gtk_combo_box_set_active(GTK_COMBO_BOX(combo), 9); break;
         case wa_prev_task:          gtk_combo_box_set_active(GTK_COMBO_BOX(combo), 10); break;
+        case wa_set_icon:           gtk_combo_box_set_active(GTK_COMBO_BOX(combo), 11); break;
     }
 }
 
@@ -2258,7 +2261,8 @@ char *get_action(GtkWidget *combo)
         "desktop_left",
         "desktop_right",
         "next_task",
-        "prev_task"}[ gtk_combo_box_get_active (GTK_COMBO_BOX (combo)) + 1 ];
+        "prev_task",
+        "set_icon"}[ gtk_combo_box_get_active (GTK_COMBO_BOX (combo)) + 1 ];
 }
 
 // TESTS

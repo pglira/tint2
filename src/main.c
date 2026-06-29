@@ -56,6 +56,7 @@
 #include "systraybar.h"
 #include "task.h"
 #include "taskbar.h"
+#include "icon_picker.h"
 #include "tooltip.h"
 #include "timer.h"
 #include "tracing.h"
@@ -449,6 +450,11 @@ void handle_x_event(XEvent *e)
 
     if (handle_x_event_autohide(e))
         return;
+
+    if (icon_picker_handles_window(e->xany.window)) {
+        icon_picker_handle_event(e);
+        return;
+    }
 
     Panel *panel = get_panel(e->xany.window);
     switch (e->type) {

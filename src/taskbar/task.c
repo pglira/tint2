@@ -34,6 +34,7 @@
 #include "timer.h"
 #include "tooltip.h"
 #include "window.h"
+#include "icon_picker.h"
 
 Timer urgent_timer;
 GSList *urgent_list;
@@ -291,6 +292,13 @@ gboolean task_update_title(Task *task)
 Imlib_Image task_get_icon(Window win, int icon_size)
 {
     Imlib_Image img = NULL;
+
+    const IconSpec *spec = icon_override_get(win);
+    if (spec) {
+        img = render_icon_image(spec->label, spec->bg, icon_size);
+        if (img)
+            return img;
+    }
 
     int len;
     gulong *data = get_property(win, server.atom [_NET_WM_ICON], XA_CARDINAL, &len);
@@ -865,6 +873,8 @@ void task_handle_mouse_event(Task *task, MouseAction action)
                             activate_window(task1->win);
                             break;
         }
+        case SET_ICON:      icon_picker_open(task);
+                            break;
         default: break;
     }
 }
