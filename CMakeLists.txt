@@ -134,6 +134,7 @@ set( SOURCES src/config-keys.c
              src/util/signals.c
              src/util/tracing.c
              src/mouse_actions.c
+             src/shortcuts.c
              src/drag_and_drop.c
              src/default_icon.c
              src/clock/clock.c

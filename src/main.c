@@ -51,6 +51,7 @@
 #include "mouse_actions.h"
 #include "panel.h"
 #include "server.h"
+#include "shortcuts.h"
 #include "signals.h"
 #include "systraybar.h"
 #include "task.h"
@@ -127,6 +128,8 @@ void handle_event_property_notify(XEvent *e)
 
             server_get_number_of_desktops();
             server.desktop = get_current_desktop();
+            if (old_desktop != server.desktop)
+                shortcuts_set_previous_desktop(old_desktop);
             if (old_num_desktops != server.num_desktops) // If desktops number changed
             {
                 if (server.num_desktops <= server.desktop)
@@ -449,6 +452,9 @@ void handle_x_event(XEvent *e)
 
     Panel *panel = get_panel(e->xany.window);
     switch (e->type) {
+    case KeyPress:
+        shortcuts_handle_keypress(&e->xkey);
+        break;
     case ButtonPress: {
         handle_mouse_press_event(e);
         Area *area = find_area_under_mouse(panel, e->xbutton.x, e->xbutton.y);

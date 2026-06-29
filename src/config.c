@@ -55,6 +55,7 @@
 #include "timer.h"
 #include "separator.h"
 #include "execplugin.h"
+#include "shortcuts.h"
 
 #ifdef ENABLE_BATTERY
 #include "battery.h"
@@ -114,6 +115,7 @@ void default_config()
     snapshot_path = NULL;
     new_config_file = FALSE;
     read_panel_position = FALSE;
+    keyboard_shortcuts = TRUE;
 }
 
 void cleanup_config()
@@ -547,6 +549,9 @@ void add_entry(char *key, char *value)
         break;
     case key_wm_menu:
         wm_menu = ATOB(value);
+        break;
+    case key_keyboard_shortcuts:
+        keyboard_shortcuts = ATOB(value);
         break;
     case key_panel_dock:
         panel_dock = ATOB(value);

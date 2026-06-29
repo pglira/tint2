@@ -101,6 +101,7 @@ typedef enum {
     key_gradient_id_hover,
     key_gradient_id_pressed,
     key_hover_gradient_id,
+    key_keyboard_shortcuts,
     key_launcher_apps_dir,
     key_launcher_background_id,
     key_launcher_icon_asb,

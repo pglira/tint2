@@ -17,6 +17,7 @@
 #include "fps_distribution.h"
 #include "panel.h"
 #include "server.h"
+#include "shortcuts.h"
 #include "signals.h"
 #include "test.h"
 #include "tooltip.h"
@@ -256,6 +257,7 @@ void init_post_config()
 
     init_signals_postconfig();
     load_default_task_icon();
+    shortcuts_init();
 
     XSync(server.display, False);
 }
@@ -341,6 +343,7 @@ void cleanup()
     cleanup_battery();
 #endif
     cleanup_separator();
+    shortcuts_cleanup();
     cleanup_taskbar();
     cleanup_panel();
     cleanup_config();

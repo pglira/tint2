@@ -102,6 +102,7 @@ char *cfg_keys[] = {
     [key_gradient_id_hover                      ]="gradient_id_hover",
     [key_gradient_id_pressed                    ]="gradient_id_pressed",
     [key_hover_gradient_id                      ]="hover_gradient_id",
+    [key_keyboard_shortcuts                     ]="keyboard_shortcuts",
     [key_launcher_apps_dir                      ]="launcher_apps_dir",
     [key_launcher_background_id                 ]="launcher_background_id",
     [key_launcher_icon_asb                      ]="launcher_icon_asb",

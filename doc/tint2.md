@@ -306,6 +306,8 @@ panel_size = 94% 30
 
   * `wm_menu = boolean (0 or 1)` : Defines if tint2 forwards unhandled mouse events to your window manager. Useful for window managers such as openbox, which display the start menu if you right click on the desktop.
 
+  * `keyboard_shortcuts = boolean (0 or 1)` : Enables a set of global keyboard shortcuts grabbed by tint2 (default enabled). `Super+1` to `Super+9` and `Super+0` switch to desktops 1 to 10. `Super+Tab` switches back to the most recently used desktop. `Super+n` activates the next task on the current desktop and `Super+Shift+n` the previous one, following the order shown in the panel. Disable this if the shortcuts conflict with bindings of your window manager (some tiling window managers already use `Super+number`).
+
   * `panel_dock = boolean (0 or 1)` : Defines if tint2 is placed into the window manager's dock. For the openbox window manager it is advised to also use a modifier for the moveButton option, otherwise the mouse click is not forwarded to tint2 (in ~/.config/openbox/rc.xml).
 
   * `panel_pivot_struts = boolean (0 or 1)` : Defines if tint2 lies to the window manager about its orientation (horizontal vs vertical) when requesting reserved space with STRUTs (see `strut_policy` below). On some window managers, this allows placing a panel in the middle of the virtual screen, e.g. on the bottom edge of the top monitor in a vertical dual-monitor setup. 
